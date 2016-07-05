@@ -1,5 +1,5 @@
 #%RAML 0.8
-title: Mail
+title: Order Phone
 securedBy: [null,OAuth 2.0]
 version: Beta 1.0
 mediaType: application/json
@@ -34,8 +34,8 @@ securitySchemes:
         authorizationUri: http://localhost:8084/sampleapi/api/authorize
         accessTokenUri: http://localhost:8084/sampleapi/api/token
         authorizationGrants: [authorization_code, refresh_token,client_credentials]
-/sendEmail:
-  description: Send an email to recipient address which will come through queryparam
+/order:
+  description: Create a new order for phone
   post:
     description: post email
     body:
@@ -43,12 +43,7 @@ securitySchemes:
       201:
           body:
   get:
-    description: get email
-    queryParameters:
-      addr:
-        type: string
-        required: true
-        description: Email address of recipient
+    description: get orders for current user
     responses:
-      201:
+      200:
           body:
